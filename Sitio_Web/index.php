@@ -29,7 +29,7 @@
                 <i class="fas fa-angry" style="font-size:48px; color:white;"></i>
             </a>
 
-               
+              
                <div class="d-flex ms-auto order-sm-last">
                               <button type="button" class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#modalAcceder">
                                              Acceder
@@ -58,7 +58,7 @@
                                                             <a class="nav-link" href="Servicios.php">servicios</a>
                                              </li>  
                                              <li class ="nav-item">
-                                                            <a class = "nav-link" href="Contactos.php">contactos</a>
+                                                            <a class ="nav-link" href="Contactos.php">contactos</a>
                                              </li>
 
                               </ul>
@@ -77,7 +77,22 @@
                                              </div>
 
                                              <div class="modal-body">
-                                                            Modal body..
+                                                <form action="Contactos.php" method="post">
+                                                <div class="mb-3 mt-3">
+                                                    <label for="email" class="form-label">Email:</label>
+                                                    <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="pwd" class="form-label">Password:</label>
+                                                    <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd">
+                                                </div>
+                                                <div class="form-check mb-3">
+                                                    <label class="form-check-label">
+                                                    <input class="form-check-input" type="checkbox" name="remember"> Remember me
+                                                    </label>
+                                                </div>
+                                                <button type="submit" class="btn btn-primary">Loggin</button>
+                                                </form>
                                              </div>
 
                                              <div class="modal-footer">
@@ -89,25 +104,7 @@
 </div>
 
 
-               <div class= "container-fluid bg-warning">
-                              hola contactos
-                              <a href="index.php"> Ir a la pagina principal</a> <br>
-                              <a href="Empresa.php"> Ir a la pagina Empresa</a> <br>
-                              <a href="Productos.php"> Ir a la pagina Productos</a> <br>
-                              <a href="Servicios.php"> Ir a la pagina Servicios</a> <br>
 
-                              <form action="Contactos.php" method="post">
-                                             <div class="mb-3 mt-3">
-                                                            <label for="email" class="form-label">Email:</label>
-                                                            <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
-                                             </div>
-                                             <div class="mb-3">
-                                                            <label for="comment" class="form-label">Comentarios:</label>
-                                                            <textarea class="form-control" rows="5" id="comment" name="text"></textarea>
-                                             </div>
-                                             <button type="submit" class="btn btn-primary mb-3">Enviar</button>
-                              </form>
-</div>
 
     <div class="container-fluid bg-primary p-3">
                <div class= "row">

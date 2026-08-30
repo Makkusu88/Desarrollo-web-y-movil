@@ -25,11 +25,20 @@
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
         <div class="container-fluid">
 
-            <a class="navbar-brand" href="navar.html"></a>
+            <a class="navbar-brand" href="index.php">
                 <i class="fas fa-angry" style="font-size:48px; color:white;"></i>
-                              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
-                              <span class="navbar-toggler-icon"></span>
+            </a>
+
+               
+               <div class="d-flex ms-auto order-sm-last">
+                              <button type="button" class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#modalAcceder">
+                                             Acceder
                               </button>
+                              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+                                             <span class="navbar-toggler-icon"></span>
+                              </button>
+               </div>
+
            
 
                <div class="collapse navbar-collapse" id="collapsibleNavbar">
@@ -57,15 +66,132 @@
 </div>
 </nav>
 
+<!-- Modal Acceder -->
+<div class="modal fade" id="modalAcceder">
+               <div class="modal-dialog">
+                              <div class="modal-content">
 
+                                             <div class="modal-header">
+                                                            <h4 class="modal-title">Autenticación</h4>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                             </div>
 
-               <div class= "container-fluid bg-warning">
-                              hola contactos
-                              <a href="navar.php"> Ir a la pagina principal</a> <br>
-                              <a href="Empresa.php"> Ir a la pagina Empresa</a> <br>
-                              <a href="Contactos.php"> Ir a la pagina Contacto</a> <br>
-                              <a href="Servicios.php"> Ir a la pagina Servicios</a> <br>
+                                             <div class="modal-body">
+                                                            Modal body..
+                                             </div>
+
+                                             <div class="modal-footer">
+                                                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                                             </div>
+
+                              </div>
+               </div>
 </div>
+
+
+
+               <div class= "container bg-warning">
+                                                <!-- Carousel -->
+                    <div id="demo" class="carousel slide" data-bs-ride="carousel">
+
+                    <!-- Indicators/dots -->
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+                        <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+                        <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+                    </div>
+
+                    <!-- The slideshow/carousel -->
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                        <img src="img/la.jpg" alt="Los Angeles" class="d-block w-100">
+                        </div>
+                        <div class="carousel-item">
+                        <img src="img/chicago.jpg" alt="Chicago" class="d-block w-100">
+                        </div>
+                        <div class="carousel-item">
+                        <img src="img/ny.jpg" alt="New York" class="d-block w-100">
+                        </div>
+                    </div>
+
+                    <!-- Left and right controls/icons -->
+                    <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </button>
+                    </div>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 col-xxl-2">
+                                <div class="card">
+                                    <img class="card-img-top" src="img/img_avatar1.png" alt="Card image">
+                                    <div class="card-body">
+                                        <h4 class="card-title">John Doe</h4>
+                                        <p class="card-text">Some example text.</p>
+                                        <a href="#" class="btn btn-primary">See Profile</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 col-xxl-2">
+                                <div class="card">
+                                    <img class="card-img-top" src="img/img_avatar1.png" alt="Card image">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Jane Doe</h4>
+                                        <p class="card-text">Some example text.</p>
+                                        <a href="#" class="btn btn-primary">See Profile</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 col-xxl-2">
+                                <div class="card">
+                                    <img class="card-img-top" src="img/img_avatar1.png" alt="Card image">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Carlos Perez</h4>
+                                        <p class="card-text">Some example text.</p>
+                                        <a href="#" class="btn btn-primary">See Profile</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 col-xxl-2">
+                                <div class="card">
+                                    <img class="card-img-top" src="img/img_avatar1.png" alt="Card image">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Ana Silva</h4>
+                                        <p class="card-text">Some example text.</p>
+                                        <a href="#" class="btn btn-primary">See Profile</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 col-xxl-2">
+                                <div class="card">
+                                    <img class="card-img-top" src="img/img_avatar1.png" alt="Card image">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Luis Rojas</h4>
+                                        <p class="card-text">Some example text.</p>
+                                        <a href="#" class="btn btn-primary">See Profile</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 col-xxl-2">
+                                <div class="card">
+                                    <img class="card-img-top" src="img/img_avatar1.png" alt="Card image">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Maria Lopez</h4>
+                                        <p class="card-text">Some example text.</p>
+                                        <a href="#" class="btn btn-primary">See Profile</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
 
 
     <div class="container-fluid bg-primary p-3">

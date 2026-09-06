@@ -1,0 +1,22 @@
+{
+               "nombre": "usuario1",
+               "pass": "clave1"
+}
+[
+  {
+    "nombre": "Juan Pérez",
+               "pass": "clave2"
+  },
+  {
+    "nombre": "María López",
+    "pass": "clave3"
+
+
+  },
+  {
+    "nombre": "Pedro Soto",
+    "pass": "clave4"
+
+
+  }
+]

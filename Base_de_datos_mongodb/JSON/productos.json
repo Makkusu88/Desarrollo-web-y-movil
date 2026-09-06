@@ -1,0 +1,73 @@
+[
+  {
+    
+    "nombre": "Churrasco Italiano",
+    "descripcion": "Churrasco de vacuno, tomate, palta y mayonesa",
+    "precio": 5990,
+    "disponible": true
+
+  },
+  {
+
+    "nombre": "Barros Luco",
+    "descripcion": "Churrasco de vacuno con queso fundido",
+    "precio": 5490,
+
+    "disponible": true,
+    "imagen": ""
+  },
+  {
+
+    "nombre": "Completo Italiano",
+    "descripcion": "Vienesa, tomate, palta y mayonesa",
+    "precio": 3490,
+
+    "disponible": true,
+    "imagen": ""
+  },
+  {
+
+    "nombre": "Coca-Cola 350 ml",
+    "descripcion": "Bebida Coca-Cola en lata",
+    "precio": 1990,
+
+    "disponible": true,
+    "imagen": ""
+  },
+  {
+
+    "nombre": "Sprite 350 ml",
+    "descripcion": "Bebida Sprite en lata",
+    "precio": 1990,
+
+    "disponible": true,
+    "imagen": ""
+  },
+  {
+
+    "nombre": "Papas fritas medianas",
+    "descripcion": "Porción mediana de papas fritas",
+    "precio": 2990,
+
+    "disponible": true,
+    "imagen": ""
+  },
+  {
+  
+    "nombre": "Combo Italiano",
+    "descripcion": "Churrasco Italiano, papas fritas y bebida",
+    "precio": 8990,
+
+    "disponible": true,
+    "imagen": ""
+  },
+  {
+
+    "nombre": "Brownie",
+    "descripcion": "Brownie de chocolate",
+    "precio": 2490,
+
+    "disponible": true,
+    "imagen": ""
+  }
+]

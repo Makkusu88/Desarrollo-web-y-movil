@@ -1,0 +1,32 @@
+[
+  {
+
+    "nombre": "Sandwiches",
+    "descripcion": "Sandwiches disponibles en el menú",
+    "activo": true
+  },
+  {
+
+    "nombre": "Bebidas",
+    "descripcion": "Bebidas frías disponibles",
+    "activo": true
+  },
+  {
+
+    "nombre": "Papas y acompañamientos",
+    "descripcion": "Papas fritas y acompañamientos",
+    "activo": true
+  },
+  {
+
+    "nombre": "Combos",
+    "descripcion": "Promociones del local",
+    "activo": true
+  },
+  {
+ 
+    "nombre": "Postres",
+    "descripcion": "Postres disponibles",
+    "activo": true
+  }
+]

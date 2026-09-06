@@ -1,0 +1,62 @@
+[
+  {
+    "nombre": "Carne de churrasco",
+    "stock": 15,
+    "unidadMedida": "KILOGRAMO",
+    "stockMinimo": 5
+  },
+  {
+    "nombre": "Pan frica",
+    "stock": 100,
+    "unidadMedida": "UNIDAD",
+    "stockMinimo": 30
+  },
+  {
+    "nombre": "Palta",
+    "stock": 12,
+    "unidadMedida": "KILOGRAMO",
+    "stockMinimo": 4
+  },
+  {
+    "nombre": "Tomate",
+    "stock": 60,
+    "unidadMedida": "UNIDAD",
+    "stockMinimo": 20
+  },
+  {
+    "nombre": "Queso",
+    "stock": 10,
+    "unidadMedida": "KILOGRAMO",
+    "stockMinimo": 3
+  },
+  {
+    "nombre": "Mayonesa",
+    "stock": 8,
+    "unidadMedida": "LITRO",
+    "stockMinimo": 2
+  },
+  {
+    "nombre": "Papas prefritas",
+    "stock": 20,
+    "unidadMedida": "KILOGRAMO",
+    "stockMinimo": 5
+  },
+  {
+    "nombre": "Vienesas",
+    "stock": 80,
+    "unidadMedida": "UNIDAD",
+    "stockMinimo": 20
+  },
+  {
+    "nombre": "Lechuga",
+    "stock": 35,
+    "unidadMedida": "UNIDAD",
+    "stockMinimo": 10
+  },
+  {
+    "nombre": "Ketchup",
+    "stock": 6,
+    "unidadMedida": "LITRO",
+    "stockMinimo": 2
+  }
+]

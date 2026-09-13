@@ -1,0 +1,51 @@
+[
+  {
+    "nombre": "Carnes Santiago Ltda.",
+    "telefono": "+56222221111",
+    "correo": "ventas@carnessantiago.cl",
+    "direccion": "Santiago, Chile",
+    "activo": true
+  },
+  {
+    "nombre": "Panadería Central",
+    "telefono": "+56222222222",
+    "correo": "pedidos@panaderiacentral.cl",
+    "direccion": "Santiago, Chile",
+    "activo": true
+  },
+  {
+    "nombre": "Distribuidora de Bebidas Chile",
+    "telefono": "+56233333333",
+    "correo": "ventas@distribuidorachile.cl",
+    "direccion": "Quilicura, Santiago",
+    "activo": true
+  },
+  {
+    "nombre": "Verduras del Valle",
+    "telefono": "+56944445555",
+    "correo": "pedidos@verdurasdelvalle.cl",
+    "direccion": "La Florida, Santiago",
+    "activo": true
+  },
+  {
+    "nombre": "Congelados Express",
+    "telefono": "+56255555555",
+    "correo": "ventas@congeladosexpress.cl",
+    "direccion": "Pudahuel, Santiago",
+    "activo": true
+  },
+  {
+    "nombre": "Lácteos del Sur",
+    "telefono": "+56266666666",
+    "correo": "ventas@lacteosdelsur.cl",
+    "direccion": "Maipú, Santiago",
+    "activo": true
+  },
+  {
+    "nombre": "Distribuidora Sabores",
+    "telefono": "+56977777777",
+    "correo": "contacto@distribuidorasabores.cl",
+    "direccion": "San Miguel, Santiago",
+    "activo": true
+  }
+]

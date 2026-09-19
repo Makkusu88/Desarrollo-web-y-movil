@@ -31,8 +31,6 @@ function mostrarAviso(texto) {
     mostrarAviso.timer = setTimeout(() => { aviso.hidden = true; }, 3000);
 }
 
-// ---------- Cabecera: sesión y búsqueda (inicio y detalle) ----------
-
 function iniciarSesionCabecera() {
     const boton = document.querySelector("[data-sesion]");
     if (!boton) return;
@@ -74,8 +72,6 @@ function iniciarBusqueda(alBuscar) {
         input.addEventListener("input", () => alBuscar(input.value));
     }
 }
-
-// ---------- Pantalla 1: inicio ----------
 
 function crearTarjeta(producto) {
     const tarjeta = document.createElement("a");
@@ -173,8 +169,6 @@ function iniciarInicio() {
 
     pintar();
 }
-
-// ---------- Pantalla 2: login ----------
 
 const TEXTOS_LOGIN = {
     es: {
@@ -279,8 +273,6 @@ function iniciarLogin() {
     });
 }
 
-// ---------- Pantalla 3: detalle de producto ----------
-
 function iniciarDetalle() {
     const params = new URLSearchParams(window.location.search);
     const id = Number(params.get("id")) || PRODUCTOS[0].id;
@@ -381,8 +373,6 @@ function iniciarDetalle() {
     iniciarBusqueda(null);
     actualizarTotal();
 }
-
-// ---------- Arranque según la página ----------
 
 document.addEventListener("DOMContentLoaded", () => {
     const pagina = document.body.dataset.pagina;

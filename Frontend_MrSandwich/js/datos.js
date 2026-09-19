@@ -96,7 +96,6 @@ const PRODUCTOS = [
     }
 ];
 
-// Opciones (3 botones) y extras de "Personaliza tu pedido" según la categoría
 const PERSONALIZACION = {
     sandwich: {
         opciones: [

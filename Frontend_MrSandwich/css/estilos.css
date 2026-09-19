@@ -89,8 +89,6 @@ svg .relleno {
     stroke: none;
 }
 
-/* ---------- Botones de la cabecera (Buscar / Inicio de sesión) ---------- */
-
 .acciones {
     display: flex;
     gap: 16px;
@@ -134,8 +132,6 @@ svg .relleno {
     font-size: 18px;
 }
 
-/* ---------- Barra de búsqueda ---------- */
-
 .barra-busqueda {
     display: flex;
     gap: 8px;
@@ -168,8 +164,6 @@ svg .relleno {
     line-height: 1;
     cursor: pointer;
 }
-
-/* ---------- Pantalla 1: inicio ---------- */
 
 .hero {
     position: relative;
@@ -318,8 +312,6 @@ svg .relleno {
     background: var(--cafe-oscuro);
 }
 
-/* ---------- Pie de página ---------- */
-
 .pie {
     background: var(--negro);
     color: var(--blanco);
@@ -362,8 +354,6 @@ svg .relleno {
     height: 22px;
     stroke-width: 1.6;
 }
-
-/* ---------- Pantalla 2: login ---------- */
 
 .pagina-login {
     background: #1f0703 url("../img/fondo-login.jpg") center / cover no-repeat fixed;
@@ -558,8 +548,6 @@ svg .relleno {
 .idioma option {
     color: var(--texto);
 }
-
-/* ---------- Pantalla 3: detalle de producto ---------- */
 
 .cabecera {
     min-height: 120px;
@@ -802,8 +790,6 @@ svg .relleno {
     background: #c4a172;
 }
 
-/* ---------- Aviso flotante ---------- */
-
 .aviso {
     position: fixed;
     left: 50%;
@@ -818,8 +804,6 @@ svg .relleno {
     box-shadow: 0 10px 30px rgba(0, 0, 0, .35);
     font-size: 15px;
 }
-
-/* ---------- Responsivo ---------- */
 
 @media (max-width: 1280px) {
     .grilla-productos {

@@ -146,6 +146,7 @@ svg .relleno {
 
 .barra-busqueda input {
     flex: 1;
+    min-width: 0;
     height: 44px;
     padding: 0 20px;
     border: 2px solid var(--tostado);
@@ -163,6 +164,24 @@ svg .relleno {
     font-size: 26px;
     line-height: 1;
     cursor: pointer;
+    flex-shrink: 0;
+}
+
+.barra-busqueda button[type="submit"] {
+    height: 44px;
+    padding: 0 22px;
+    border: 2px solid var(--tostado);
+    border-radius: 999px;
+    background: var(--tostado);
+    color: var(--cafe-oscuro);
+    font-weight: 700;
+    cursor: pointer;
+    transition: background .15s;
+    flex-shrink: 0;
+}
+
+.barra-busqueda button[type="submit"]:hover {
+    background: #c4a172;
 }
 
 .hero {

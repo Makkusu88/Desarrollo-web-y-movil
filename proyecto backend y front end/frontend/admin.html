@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel del local | Mr. Sandwich</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Lobster&family=Open+Sans:wght@400;600;700;800&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/app.css">
+</head>
+<body data-pagina="admin">
+
+    <header class="cabecera">
+        <a href="index.html" class="cabecera-marca">
+            <img src="img/logo-circulo.jpg" alt="Logo Mr. Sandwich">
+            <span>Mr. Sandwich</span>
+        </a>
+        <div class="acciones">
+            <a href="carrito.html" class="btn-pill btn-carrito">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.4 11h11l2-8H6.2"/><circle cx="9" cy="19" r="1.5"/><circle cx="17" cy="19" r="1.5"/></svg>
+                Mi pedido (<span data-carrito-cantidad>0</span>)
+            </a>
+            <a href="login.html" class="btn-pill btn-sesion" data-sesion>
+                <span>Inicio de sesión</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+        </div>
+    </header>
+
+    <main class="contenido">
+        <h1>Panel del local</h1>
+        <div class="pestanas" role="tablist">
+            <button class="pestana" role="tab" data-pestana="pedidos" aria-selected="true">Pedidos en curso</button>
+            <button class="pestana" role="tab" data-pestana="productos" aria-selected="false">Productos y stock</button>
+            <button class="pestana" role="tab" data-pestana="reportes" aria-selected="false" data-solo-admin hidden>Reportes</button>
+            <button class="pestana" type="button" data-cerrar-sesion>Cerrar sesión</button>
+        </div>
+        <section class="panel" data-vista="pedidos">
+            <div class="botonera" style="justify-content:space-between;align-items:center">
+                <h2>Pedidos en curso</h2>
+                <label class="formulario">Filtrar
+                    <select data-filtro-estado>
+                        <option value="">Todos en curso</option>
+                        <option value="PAGADO">Pagados</option>
+                        <option value="EN_PREPARACION">En preparación</option>
+                        <option value="LISTO">Listos</option>
+                        <option value="EN_REPARTO">En reparto</option>
+                    </select>
+                </label>
+            </div>
+            <div class="lista-lineas" data-pedidos-local></div>
+        </section>
+        <section class="panel" data-vista="productos" hidden>
+            <h2>Productos y stock</h2>
+            <div class="tabla-contenedor"><table class="tabla"><thead><tr>
+                <th>ID</th><th>Producto</th><th>Categoría</th><th>Precio</th><th>Stock</th><th>Disponible</th><th>Acciones</th>
+            </tr></thead><tbody data-productos></tbody></table></div>
+            <form class="formulario" data-producto data-solo-admin hidden novalidate>
+                <h2 data-titulo-producto>Nuevo producto</h2>
+                <input type="hidden" name="id">
+                <div class="fila">
+                    <label>Nombre <input name="nombre" required maxlength="60"></label>
+                    <label>Categoría <select name="categoria"></select></label>
+                    <label>Precio <input type="number" name="precio" min="100" max="100000" required></label>
+                </div>
+                <label>Descripción <input name="descripcion" required maxlength="200"></label>
+                <div class="fila">
+                    <label>Imagen <select name="imagen">
+                        <option value="img/sandwich.jpg">Sandwich</option>
+                        <option value="img/sliders.webp">Hamburguesas</option>
+                        <option value="img/hamburguesa-papas.webp">Promoción</option>
+                        <option value="img/bebida.svg">Bebida</option>
+                    </select></label>
+                    <label>Stock <input type="number" name="stock" min="0" max="10000" required value="0"></label>
+                    <label>Stock mínimo <input type="number" name="stock_minimo" min="0" max="1000" value="5"></label>
+                    <label>Disponible <select name="disponible"><option value="true">Sí</option><option value="false">No</option></select></label>
+                </div>
+                <div class="botonera">
+                    <button class="btn-primario" type="submit">Guardar producto</button>
+                    <button class="btn-secundario" type="reset">Nuevo / limpiar</button>
+                </div>
+            </form>
+        </section>
+        <section class="panel" data-vista="reportes" hidden>
+            <div class="botonera" style="justify-content:space-between;align-items:end">
+                <h2>Ventas</h2>
+                <form class="formulario botonera" data-filtro-reporte style="display:flex">
+                    <label>Desde <input type="date" name="desde"></label>
+                    <label>Hasta <input type="date" name="hasta"></label>
+                    <button class="btn-primario btn-chico" type="submit">Actualizar</button>
+                </form>
+            </div>
+            <div data-reporte></div>
+        </section>
+    </main>
+
+    <div class="aviso" role="status" aria-live="polite" hidden></div>
+
+    <script src="js/api.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>

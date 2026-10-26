@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear cuenta | Mr. Sandwich</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Lobster&family=Open+Sans:wght@400;600;700;800&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/app.css">
+</head>
+<body data-pagina="registro" class="pagina-login">
+
+    <main class="login">
+        <a href="index.html" class="login-logo">
+            <img src="img/logo-mr-sandwich.webp" alt="Mr. Sandwich - volver al inicio">
+        </a>
+        <img class="login-deco login-deco-izq" src="img/hamburguesa-papas.webp" alt="">
+        <img class="login-deco login-deco-der" src="img/sliders.webp" alt="">
+
+        <section class="login-tarjeta">
+            <img class="login-escudo" src="img/escudo.webp" alt="">
+            <h1 class="login-titulo">Crear cuenta</h1>
+            <form class="login-form" novalidate data-registro>
+                <div class="campo"><input name="nombre" placeholder="Nombre*" required minlength="2" maxlength="60" autocomplete="name"></div>
+                <div class="campo"><input type="email" name="email" placeholder="Email*" required maxlength="120" autocomplete="email"></div>
+                <div class="campo"><input name="telefono" placeholder="Teléfono (+56912345678)" inputmode="tel" autocomplete="tel"></div>
+                <div class="campo"><input type="password" name="password" placeholder="Contraseña* (mín. 8, letras y números)" required minlength="8" autocomplete="new-password"></div>
+                <div class="campo"><input type="password" name="password2" placeholder="Repite la contraseña*" required autocomplete="new-password"></div>
+                <p class="login-mensaje" role="status" aria-live="polite" hidden></p>
+                <button type="submit" class="login-boton">Registrarme</button>
+                <a href="login.html" class="login-olvido login-registro">¿Ya tienes cuenta? Inicia sesión</a>
+            </form>
+        </section>
+    </main>
+
+    <script src="js/api.js"></script>
+    <script src="js/cuenta.js"></script>
+</body>
+</html>

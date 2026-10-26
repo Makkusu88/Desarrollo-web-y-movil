@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi pedido | Mr. Sandwich</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Lobster&family=Open+Sans:wght@400;600;700;800&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/app.css">
+</head>
+<body data-pagina="carrito">
+
+    <header class="cabecera">
+        <a href="index.html" class="cabecera-marca">
+            <img src="img/logo-circulo.jpg" alt="Logo Mr. Sandwich">
+            <span>Mr. Sandwich</span>
+        </a>
+        <div class="acciones">
+            <a href="carrito.html" class="btn-pill btn-carrito">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.4 11h11l2-8H6.2"/><circle cx="9" cy="19" r="1.5"/><circle cx="17" cy="19" r="1.5"/></svg>
+                Mi pedido (<span data-carrito-cantidad>0</span>)
+            </a>
+            <a href="login.html" class="btn-pill btn-sesion" data-sesion>
+                <span>Inicio de sesión</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+        </div>
+    </header>
+
+    <main class="contenido">
+        <h1>Mi pedido</h1>
+        <div class="dos-columnas">
+            <section class="panel" aria-labelledby="t-productos">
+                <h2 id="t-productos">Productos</h2>
+                <ul class="lista-lineas" data-lineas></ul>
+                <p class="mensaje" data-vacio hidden>Tu pedido está vacío. <a href="index.html">Ver el menú</a></p>
+            </section>
+            <section class="panel" aria-labelledby="t-entrega">
+                <h2 id="t-entrega">Entrega y pago</h2>
+                <form class="formulario" data-checkout novalidate>
+                    <fieldset class="botonera" style="border:0;padding:0;margin:0">
+                        <legend class="visualmente-oculto">Tipo de entrega</legend>
+                        <label><input type="radio" name="tipo_entrega" value="RETIRO" checked> Retiro en el local</label>
+                        <label><input type="radio" name="tipo_entrega" value="DELIVERY"> Delivery (+$1.990)</label>
+                    </fieldset>
+                    <label data-bloque-direccion hidden>Dirección de entrega
+                        <select name="direccion_id"></select>
+                        <a href="cuenta.html#direcciones" class="nota">Administrar mis direcciones</a>
+                    </label>
+                    <label>Notas para el local (opcional)
+                        <textarea name="notas" maxlength="140" rows="2"></textarea>
+                    </label>
+                    <div class="totales" data-totales></div>
+                    <p class="nota">Los precios y el total oficial los calcula el local al confirmar.</p>
+                    <p class="mensaje error" data-error hidden></p>
+                    <button type="submit" class="btn-primario" data-confirmar>Confirmar y pagar</button>
+                </form>
+            </section>
+        </div>
+    </main>
+
+    <div class="aviso" role="status" aria-live="polite" hidden></div>
+
+    <script src="js/api.js"></script>
+    <script src="js/pedidos.js"></script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi cuenta | Mr. Sandwich</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Lobster&family=Open+Sans:wght@400;600;700;800&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/app.css">
+</head>
+<body data-pagina="cuenta">
+
+    <header class="cabecera">
+        <a href="index.html" class="cabecera-marca">
+            <img src="img/logo-circulo.jpg" alt="Logo Mr. Sandwich">
+            <span>Mr. Sandwich</span>
+        </a>
+        <div class="acciones">
+            <a href="carrito.html" class="btn-pill btn-carrito">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.4 11h11l2-8H6.2"/><circle cx="9" cy="19" r="1.5"/><circle cx="17" cy="19" r="1.5"/></svg>
+                Mi pedido (<span data-carrito-cantidad>0</span>)
+            </a>
+            <a href="login.html" class="btn-pill btn-sesion" data-sesion>
+                <span>Inicio de sesión</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+        </div>
+    </header>
+
+    <main class="contenido">
+        <h1>Mi cuenta</h1>
+        <div class="dos-columnas">
+            <section class="panel" id="pedidos" aria-labelledby="t-pedidos">
+                <h2 id="t-pedidos">Mis pedidos</h2>
+                <div class="lista-lineas" data-pedidos></div>
+                <div class="botonera" data-paginacion></div>
+            </section>
+            <div class="contenido" style="padding:0">
+                <section class="panel" aria-labelledby="t-perfil">
+                    <h2 id="t-perfil">Mis datos</h2>
+                    <form class="formulario" data-perfil novalidate>
+                        <label>Email <input type="email" name="email" disabled></label>
+                        <label>Nombre <input name="nombre" required minlength="2" maxlength="60" autocomplete="name"></label>
+                        <label>Teléfono <input name="telefono" inputmode="tel" placeholder="+56912345678" autocomplete="tel"></label>
+                        <button class="btn-primario" type="submit">Guardar cambios</button>
+                    </form>
+                </section>
+                <section class="panel" id="direcciones" aria-labelledby="t-direcciones">
+                    <h2 id="t-direcciones">Mis direcciones</h2>
+                    <ul class="lista-lineas" data-direcciones></ul>
+                    <form class="formulario" data-direccion novalidate>
+                        <input type="hidden" name="id">
+                        <div class="fila">
+                            <label>Alias <input name="alias" required maxlength="30" placeholder="Casa"></label>
+                            <label>Comuna <input name="comuna" required maxlength="40"></label>
+                        </div>
+                        <div class="fila">
+                            <label>Calle <input name="calle" required maxlength="80"></label>
+                            <label>Número <input name="numero" required maxlength="10"></label>
+                        </div>
+                        <label>Referencia (opcional) <input name="referencia" maxlength="120"></label>
+                        <div class="botonera">
+                            <button class="btn-primario" type="submit" data-guardar-direccion>Agregar dirección</button>
+                            <button class="btn-secundario" type="reset">Limpiar</button>
+                        </div>
+                    </form>
+                </section>
+                <button type="button" class="btn-peligro" data-cerrar-sesion>Cerrar sesión</button>
+            </div>
+        </div>
+    </main>
+
+    <div class="aviso" role="status" aria-live="polite" hidden></div>
+
+    <script src="js/api.js"></script>
+    <script src="js/cuenta.js"></script>
+</body>
+</html>

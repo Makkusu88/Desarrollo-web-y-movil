@@ -1,0 +1,68 @@
+// Contrato gRPC interno entre orders (cliente) e inventory (servidor).
+// Transporte: TLS mutuo. La identidad del llamador es el CN del certificado
+// cliente ("orders"); inventory autoriza cada método según ese CN.
+// Todas las llamadas son unary con deadline de 2 s definido por el cliente.
+syntax = "proto3";
+
+package mrsandwich.inventory.v1;
+
+service InventoryService {
+  // Calcula precios oficiales de las líneas del carrito. No modifica stock.
+  rpc QuoteItems (QuoteRequest) returns (QuoteResponse);
+  // Descuenta stock para un pedido. Idempotente por order_id.
+  rpc ReserveStock (ReserveRequest) returns (ReservationResponse);
+  // Devuelve el stock de una reserva activa (anulación o expiración). Idempotente.
+  rpc ReleaseReservation (ReservationRef) returns (ReservationResponse);
+  // Marca la reserva como definitiva tras el pago. Idempotente.
+  rpc CommitReservation (ReservationRef) returns (ReservationResponse);
+}
+
+message ExtraSelection {
+  string extra_id = 1;
+  int32 qty = 2;
+}
+
+message ItemSelection {
+  int32 product_id = 1;
+  string option_id = 2;
+  repeated ExtraSelection extras = 3;
+  int32 qty = 4;
+}
+
+message QuoteRequest {
+  repeated ItemSelection items = 1;
+}
+
+message QuotedLine {
+  int32 product_id = 1;
+  string nombre = 2;
+  string opcion = 3;
+  repeated string extras = 4;
+  int32 qty = 5;
+  int64 unit_price = 6;
+  int64 line_total = 7;
+}
+
+message QuoteResponse {
+  repeated QuotedLine lines = 1;
+  int64 subtotal = 2;
+}
+
+message StockItem {
+  int32 product_id = 1;
+  int32 qty = 2;
+}
+
+message ReserveRequest {
+  string order_id = 1;
+  repeated StockItem items = 2;
+}
+
+message ReservationRef {
+  string order_id = 1;
+}
+
+message ReservationResponse {
+  string order_id = 1;
+  string status = 2;  // ACTIVE | COMMITTED | RELEASED
+}

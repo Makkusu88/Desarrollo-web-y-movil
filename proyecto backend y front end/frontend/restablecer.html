@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperar contraseña | Mr. Sandwich</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Lobster&family=Open+Sans:wght@400;600;700;800&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/app.css">
+</head>
+<body data-pagina="restablecer" class="pagina-login">
+
+    <main class="login">
+        <a href="index.html" class="login-logo">
+            <img src="img/logo-mr-sandwich.webp" alt="Mr. Sandwich - volver al inicio">
+        </a>
+        <img class="login-deco login-deco-izq" src="img/hamburguesa-papas.webp" alt="">
+        <img class="login-deco login-deco-der" src="img/sliders.webp" alt="">
+
+        <section class="login-tarjeta">
+            <img class="login-escudo" src="img/escudo.webp" alt="">
+            <h1 class="login-titulo">Recuperar contraseña</h1>
+            <form class="login-form" novalidate data-solicitar>
+                <p class="login-texto">Te enviaremos un enlace para crear una nueva contraseña.</p>
+                <div class="campo"><input type="email" name="email" placeholder="Email*" required autocomplete="email"></div>
+                <p class="login-mensaje" role="status" aria-live="polite" hidden></p>
+                <button type="submit" class="login-boton">Enviar enlace</button>
+                <a href="login.html" class="login-olvido login-registro">Volver a iniciar sesión</a>
+            </form>
+            <form class="login-form" novalidate data-confirmar hidden>
+                <p class="login-texto">Define tu nueva contraseña.</p>
+                <div class="campo"><input type="password" name="password" placeholder="Nueva contraseña* (mín. 8, letras y números)" required autocomplete="new-password"></div>
+                <div class="campo"><input type="password" name="password2" placeholder="Repite la contraseña*" required autocomplete="new-password"></div>
+                <p class="login-mensaje" role="status" aria-live="polite" hidden></p>
+                <button type="submit" class="login-boton">Guardar contraseña</button>
+            </form>
+        </section>
+    </main>
+
+    <script src="js/api.js"></script>
+    <script src="js/cuenta.js"></script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+# Dependencias y artefactos
+node_modules/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Configuración local: nunca versionar valores reales
+.env
+.env.*
+!.env.example
+
+# Estado de ejecución (por defecto vive en ~/.mrsandwich, fuera del repo)
+runtime/
+*.token
+mongo-admin.json
+analytics-pseudonym.key

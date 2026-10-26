@@ -1,0 +1,328 @@
+/* Estilos de las pantallas agregadas con la integración al backend:
+   carrito, pedido, cuenta, registro, recuperación y panel del local.
+   Reutiliza las variables de estilos.css. */
+
+.btn-carrito {
+    background: var(--dorado);
+    color: var(--texto);
+    border: 2px solid var(--negro);
+}
+
+.tarjeta.agotado {
+    opacity: .6;
+}
+
+.contenido {
+    flex: 1;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 28px clamp(16px, 3vw, 32px) 56px;
+    display: grid;
+    gap: 24px;
+}
+
+.contenido h1 {
+    margin: 0;
+    font-family: var(--fuente-script);
+    font-weight: 400;
+    font-size: clamp(30px, 4vw, 42px);
+    color: var(--cafe);
+}
+
+.panel {
+    background: var(--crema);
+    border-radius: 20px;
+    padding: clamp(18px, 3vw, 28px);
+    display: grid;
+    gap: 16px;
+    min-width: 0;
+}
+
+.panel h2 {
+    margin: 0;
+    font-size: 20px;
+    color: var(--cafe-oscuro);
+}
+
+.panel p {
+    margin: 0;
+}
+
+.dos-columnas {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+    gap: 24px;
+    align-items: start;
+}
+
+.formulario {
+    display: grid;
+    gap: 12px;
+}
+
+.formulario label {
+    display: grid;
+    gap: 4px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.formulario input,
+.formulario select,
+.formulario textarea {
+    width: 100%;
+    padding: 10px 14px;
+    border: 2px solid var(--tostado);
+    border-radius: 12px;
+    background: var(--blanco);
+    font: inherit;
+    font-weight: 400;
+}
+
+.formulario .fila {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+}
+
+.btn-primario,
+.btn-secundario,
+.btn-peligro {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0 22px;
+    border-radius: 999px;
+    border: 0;
+    font-weight: 800;
+    font-size: 15px;
+    text-decoration: none;
+    cursor: pointer;
+    color: var(--texto);
+}
+
+.btn-primario { background: var(--tostado); }
+.btn-primario:hover { background: #c4a172; }
+.btn-secundario { background: var(--blanco); border: 2px solid var(--tostado); }
+.btn-peligro { background: #f4d4cf; color: var(--rojo); }
+.btn-primario:disabled,
+.btn-secundario:disabled,
+.btn-peligro:disabled { opacity: .5; cursor: not-allowed; }
+
+.btn-chico {
+    min-height: 34px;
+    padding: 0 14px;
+    font-size: 13px;
+}
+
+.botonera {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.mensaje {
+    margin: 0;
+    padding: 10px 14px;
+    border-radius: 10px;
+    background: var(--rosado);
+    font-size: 14px;
+}
+
+.mensaje.error { background: #f8d7d2; color: var(--rojo); }
+.mensaje.ok { background: #dcefdc; color: #1d5a1d; }
+
+.lista-lineas {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 12px;
+}
+
+.linea {
+    display: grid;
+    grid-template-columns: 64px minmax(0, 1fr) auto;
+    gap: 12px;
+    align-items: center;
+    background: var(--blanco);
+    border-radius: 14px;
+    padding: 10px;
+}
+
+.linea img {
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+    border-radius: 10px;
+    background: var(--tostado-claro);
+}
+
+.linea-nombre { font-weight: 700; }
+.linea-detalle { color: var(--texto-suave); font-size: 13px; }
+.linea-precio { font-weight: 700; text-align: right; }
+
+.totales {
+    display: grid;
+    gap: 6px;
+    font-size: 15px;
+}
+
+.totales div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.totales .total-final {
+    font-size: 18px;
+    font-weight: 800;
+    border-top: 2px solid var(--tostado);
+    padding-top: 8px;
+}
+
+.nota { font-size: 13px; color: var(--texto-suave); }
+
+.chip-estado {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 700;
+    background: var(--tostado-claro);
+    white-space: nowrap;
+}
+
+.estado-pendiente_pago { background: #fff0c2; }
+.estado-pagado { background: #d7ebff; }
+.estado-en_preparacion { background: #ffe1c7; }
+.estado-listo,
+.estado-en_reparto { background: #e4dcff; }
+.estado-entregado { background: #dcefdc; }
+.estado-anulado { background: #eee; color: #666; }
+
+.tarjeta-pedido {
+    display: grid;
+    gap: 8px;
+    background: var(--blanco);
+    border-radius: 14px;
+    padding: 14px;
+    text-decoration: none;
+}
+
+.tarjeta-pedido .cabeza {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+}
+
+.historial {
+    list-style: none;
+    margin: 0;
+    padding: 0 0 0 14px;
+    border-left: 3px solid var(--tostado);
+    display: grid;
+    gap: 8px;
+    font-size: 14px;
+}
+
+.pestanas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.pestana {
+    min-height: 40px;
+    padding: 0 18px;
+    border-radius: 999px;
+    border: 2px solid var(--cafe);
+    background: var(--blanco);
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.pestana[aria-selected="true"] {
+    background: var(--cafe);
+    color: var(--crema);
+}
+
+.tabla-contenedor {
+    overflow-x: auto;
+}
+
+.tabla {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    background: var(--blanco);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.tabla th,
+.tabla td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid var(--tostado-claro);
+    vertical-align: middle;
+}
+
+.tabla th { background: var(--tostado-claro); }
+.tabla input[type="number"] { width: 90px; padding: 6px 8px; border: 1px solid var(--tostado); border-radius: 8px; }
+
+.indicadores {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+}
+
+.indicador {
+    background: var(--blanco);
+    border-radius: 14px;
+    padding: 14px;
+}
+
+.indicador span { display: block; font-size: 13px; color: var(--texto-suave); }
+.indicador strong { font-size: 24px; }
+
+.barras {
+    display: grid;
+    gap: 6px;
+}
+
+.barra {
+    display: grid;
+    grid-template-columns: 90px minmax(0, 1fr) 90px;
+    gap: 8px;
+    align-items: center;
+    font-size: 13px;
+}
+
+.barra-relleno {
+    height: 14px;
+    border-radius: 7px;
+    background: var(--cafe);
+}
+
+.login-registro {
+    text-align: center;
+    margin-top: 4px;
+}
+
+.pagina-login .login-tarjeta .formulario label { color: var(--crema); }
+
+@media (max-width: 860px) {
+    .dos-columnas { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+    .linea { grid-template-columns: 48px minmax(0, 1fr); }
+    .linea img { width: 48px; height: 48px; }
+    .linea-precio { grid-column: 2; text-align: left; }
+    .barra { grid-template-columns: 70px minmax(0, 1fr) 70px; }
+    .cabecera .acciones { flex-wrap: wrap; justify-content: flex-end; }
+}

@@ -1,0 +1,82 @@
+"""
+GraphQL Gateway privado de Mr. Sandwich (solo accesible desde el API Gateway).
+Solo consultas: las reglas transaccionales (crear, pagar, anular, cambiar
+estado) permanecen en los servicios REST de cada subsistema.
+"""
+type Query {
+  "Resumen de un pedido: estado (orders) + productos (inventory) + pago (payments). Propio, o cualquiera para staff/admin."
+  resumenPedido(id: ID!): ResumenPedido
+  "Historial paginado del cliente autenticado. tamano máximo 10."
+  misPedidos(pagina: Int = 1, tamano: Int = 5): PaginaPedidos!
+  "Pedidos en curso del local (staff/admin). tamano máximo 20."
+  pedidosLocal(estado: EstadoPedido, pagina: Int = 1, tamano: Int = 10): PaginaPedidos!
+  "Panel de administración: ventas (analytics) + stock bajo (inventory). Solo admin."
+  panelAdmin(desde: String, hasta: String): PanelAdmin!
+}
+
+enum EstadoPedido { PENDIENTE_PAGO PAGADO EN_PREPARACION LISTO EN_REPARTO ENTREGADO ANULADO }
+enum TipoEntrega { RETIRO DELIVERY }
+
+type ResumenPedido {
+  id: ID!
+  estado: EstadoPedido!
+  tipoEntrega: TipoEntrega!
+  creadoEn: String!
+  actualizadoEn: String!
+  expiraEn: String
+  subtotal: Int!
+  costoEnvio: Int!
+  total: Int!
+  notas: String
+  requiereReembolso: Boolean!
+  items: [LineaPedido!]!
+  historial: [CambioEstado!]!
+  "Estado del pago (payments). null si payments no responde (error parcial)."
+  pago: Pago
+  "Dato personal: solo el dueño del pedido o staff/admin."
+  direccionEntrega: Direccion
+  "Dato personal: solo staff/admin (necesario para despachar)."
+  contacto: Contacto
+}
+
+type LineaPedido {
+  productoId: Int!
+  nombre: String!
+  opcion: String
+  extras: [String!]!
+  cantidad: Int!
+  precioUnitario: Int!
+  totalLinea: Int!
+  "Datos públicos actuales del producto (inventory). null si inventory no responde."
+  producto: Producto
+}
+
+type Producto { id: Int!, nombre: String!, imagen: String, categoria: String!, disponible: Boolean! }
+type Pago { estado: String!, comprobante: String }
+type CambioEstado { estado: EstadoPedido!, en: String!, motivo: String }
+type Direccion { alias: String, calle: String!, numero: String!, comuna: String!, referencia: String }
+type Contacto { nombre: String!, telefono: String }
+type PaginaPedidos { items: [ResumenPedido!]!, pagina: Int!, tamano: Int!, total: Int! }
+
+type PanelAdmin {
+  ventas: ReporteVentas
+  stockBajo: [ProductoStock!]
+}
+
+type ReporteVentas {
+  desde: String!
+  hasta: String!
+  totalVentas: Int!
+  pedidosPagados: Int!
+  ticketPromedio: Int!
+  clientesDistintos: Int!
+  porDia: [VentaDia!]!
+  topProductos: [TopProducto!]!
+  porEstado: [Conteo!]!
+  porTipoEntrega: [Conteo!]!
+  actualizadoEn: String
+}
+type VentaDia { dia: String!, pedidos: Int!, ventas: Int! }
+type TopProducto { productId: Int!, nombre: String!, unidades: Int!, ventas: Int! }
+type Conteo { clave: String!, cantidad: Int! }
+type ProductoStock { id: Int!, nombre: String!, stock: Int!, stockMinimo: Int! }

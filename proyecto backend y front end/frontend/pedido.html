@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seguimiento del pedido | Mr. Sandwich</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Lobster&family=Open+Sans:wght@400;600;700;800&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/app.css">
+</head>
+<body data-pagina="pedido">
+
+    <header class="cabecera">
+        <a href="index.html" class="cabecera-marca">
+            <img src="img/logo-circulo.jpg" alt="Logo Mr. Sandwich">
+            <span>Mr. Sandwich</span>
+        </a>
+        <div class="acciones">
+            <a href="carrito.html" class="btn-pill btn-carrito">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.4 11h11l2-8H6.2"/><circle cx="9" cy="19" r="1.5"/><circle cx="17" cy="19" r="1.5"/></svg>
+                Mi pedido (<span data-carrito-cantidad>0</span>)
+            </a>
+            <a href="login.html" class="btn-pill btn-sesion" data-sesion>
+                <span>Inicio de sesión</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+        </div>
+    </header>
+
+    <main class="contenido">
+        <h1>Seguimiento de tu pedido</h1>
+        <p class="mensaje" data-estado-carga>Cargando pedido...</p>
+        <div class="dos-columnas" data-resumen hidden>
+            <section class="panel" aria-labelledby="t-items">
+                <div class="botonera" style="justify-content:space-between;align-items:center">
+                    <h2 id="t-items" data-titulo-pedido></h2>
+                    <span data-chip></span>
+                </div>
+                <ul class="lista-lineas" data-items></ul>
+                <div class="totales" data-totales></div>
+            </section>
+            <section class="panel" aria-labelledby="t-seguimiento">
+                <h2 id="t-seguimiento">Estado</h2>
+                <p data-pago></p>
+                <p data-entrega></p>
+                <ol class="historial" data-historial></ol>
+                <p class="mensaje error" data-error hidden></p>
+                <div class="botonera" data-acciones></div>
+                <a href="cuenta.html#pedidos" class="nota">Ver todos mis pedidos</a>
+            </section>
+        </div>
+    </main>
+
+    <div class="aviso" role="status" aria-live="polite" hidden></div>
+
+    <script src="js/api.js"></script>
+    <script src="js/pedidos.js"></script>
+</body>
+</html>

@@ -149,7 +149,7 @@ async def ordenes():
 
 @app.api_route(
     "/api/{path:path}",
-    methods =["GET", "POST","PUT", "PATH", "DELETE"]
+    methods =["GET", "POST","PUT", "PATCH", "DELETE"]
 )
 
 async def proxy(
@@ -165,7 +165,7 @@ async def proxy(
         "X-Gateway-Secret":
         auth["backend_secret"],
         "X-Authenticated-Client":
-            auth["client_id"],
+            auth["user_id"],
         "X-Authenticated-User":
             auth["username"],
         "X-Authenticated-Roles":
@@ -176,7 +176,7 @@ async def proxy(
         "content-type"
     )
     if content_type:
-        gateway_headers["content_type"] = content_type
+        gateway_headers["content-type"] = content_type
     try:
         async with httpx.AsyncClient(timeout=10.0) as client:
             upstream = await client.request(
@@ -193,7 +193,7 @@ async def proxy(
         )
     response_headers ={}
     if "content-type" in upstream.headers:
-        response_headers["contet-type"] = upstream.headers["content-type"]
+        response_headers["content-type"] = upstream.headers["content-type"]
     return Response(
         content= upstream.content,
         status_code= upstream.status_code,

@@ -6,6 +6,7 @@ import httpx
 
 
 class SecretoNoDisponible(RuntimeError):
+    pass
 
 
 class SecretProvider:

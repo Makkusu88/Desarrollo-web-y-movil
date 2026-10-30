@@ -1,0 +1,11 @@
+=== prueba de expiracion (la que faltaba) ===
+rootdir: C:\Users\tomas\OneDrive\Desktop\desarrolloweb_3\Desarrollo-web-y-movil\proyecto backend y front end
+configfile: pytest.ini
+plugins: anyio-4.15.1
+collecting ... collected 1 item
+
+tests/test_03_negocio.py::test_expiracion_libera_stock PASSED            [100%]
+
+============================= 1 passed in 40.65s ==============================
+
+=== prueba de carga ===

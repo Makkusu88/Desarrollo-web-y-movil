@@ -22,7 +22,7 @@ def interpretar(cuerpo:str, headers:dict):
                               if len(cuerpo) != 36:
                                              raise ValueError(f"registro de ancho fijo invalido: {len(cuerpo)} se espera 36")
                               identificador = cuerpo[0:6]
-                              cliente = cuerpo[26:36].rstrip()
+                              cliente = cuerpo[6:26].rstrip()
                               monto = cuerpo[26:36]
                               if not (identificador.isascii() and identificador.isdigit() and len(monto) == 10 and monto[:7].isdigit() and monto[7] == "." and monto[8:].isdigit()):
                                              raise ValueError("campos numerico de ancho fijo invalidos")
@@ -41,8 +41,8 @@ class Escuchar(stomp.ConnectionListener):
                def __init__(self,conexion):
                               self.conexion = conexion
                def on_error(self,frame):
-                              print(f"ERROR del broken: {frame.body}")
-               def on_disconnect(self):
+                              print(f"ERROR del broker: {frame.body}")
+               def on_disconnected(self):
                               print("Conexion stomp cerrada")
                def on_message(self,frame):
                               ack_id =frame.headers["ack"]
@@ -63,19 +63,19 @@ class Escuchar(stomp.ConnectionListener):
 def main():
                parser = argparse.ArgumentParser(description ="consumidor STOMP")
                parser.add_argument("--host", default="127.0.0.1")
-               parser.add_argument("--port", default="61613")
+               parser.add_argument("--port", type=int, default=61613)
                parser.add_argument("--usuario", default="demo")
                parser.add_argument("--clave", default="demo123")
                args = parser.parse_args()
-               conexion = stomp.Connection12([(args.host,args.puerto)], vhost="/")
+               conexion = stomp.Connection12([(args.host,args.port)], vhost="/")
                conexion.set_listener("pedidos", Escuchar(conexion))
                try:
                               conexion.connect(args.usuario, args.clave, wait = True)
                               conexion.subscribe(
                                              destination = DESTINO, id ="lector-pedido",
-                                             ack="client-individial", headers ={"prefetch-count": "1"}
+                                             ack="client-individual", headers ={"prefetch-count": "1"}
                               )
-                              print(f"escuchando{DESTINO}- presiona ctrl+c para salir")
+                              print(f"escuchando {DESTINO} - presiona ctrl+c para salir")
                               while conexion.is_connected():
                                              time.sleep(0.5)
                except KeyboardInterrupt:

@@ -9,7 +9,7 @@ DESTINO ="/queue/pedidos"
 
 def contruir_mensaje(formato:str, pedido: dict,texto: str) -> tuple[str,str]:
                if formato =="texto":
-                              return texto, "text/plain"; charset=utf-8
+                              return texto, "text/plain; charset=utf-8"
                if formato == "fijo":
                               identificador = str(pedido["id"])
                               cliente = str(pedido["cliente"])
@@ -21,15 +21,15 @@ def contruir_mensaje(formato:str, pedido: dict,texto: str) -> tuple[str,str]:
                                              raise ValueError("en formato fijo --cliente admite hasta 20 caracteres ASCII")
                               if monto < 0 or len(monto_campo) != 10:
                                              raise ValueError("En formato fijo, --monto debe estar entre 0 y 99999999.99")
-                              return f"{identificador. zfill(6)}{cliente:<20}{monto_campo}", "text/plain; charset=utf-8"
+                              return f"{identificador.zfill(6)}{cliente:<20}{monto_campo}", "text/plain; charset=utf-8"
                if formato == "json":
-                              return json.dumps(pedido, ensure_ascii=False), "application/json; charset="
+                              return json.dumps(pedido, ensure_ascii=False), "application/json; charset=utf-8"
                if formato == "xml":
-                              raiz = ET.fromstring("pedido")
+                              raiz = ET.Element("pedido")
                               for clave, valor in pedido.items():
                                              ET.SubElement(raiz, clave).text = str(valor)
-                              return ET.tostring(raiz, encodig="unicode"), "application/xml; charset=utf-8"
-               raise ValueError(f"Formatod desconocido: {formato}")
+                              return ET.tostring(raiz, encoding="unicode"), "application/xml; charset=utf-8"
+               raise ValueError(f"Formato desconocido: {formato}")
                
 
 
@@ -39,10 +39,10 @@ def main():
                parser.add_argument("--formato", choices=["texto", "fijo", "xml", "json"],required=True)
                parser.add_argument("--mensaje", default="hola desde el productor STOMP")
                parser.add_argument("--id", default="123")
-               parser.add_argument("--client", default="ed jobs")
+               parser.add_argument("--cliente", default="ed jobs")
                parser.add_argument("--monto", default="123.45")
                parser.add_argument("--host", default="127.0.0.1")
-               parser.add_argument("--port", default="61613")
+               parser.add_argument("--port", type=int, default=61613)
                parser.add_argument("--usuario", default="demo")
                parser.add_argument("--clave", default="demo123")
                args = parser.parse_args()
@@ -50,19 +50,19 @@ def main():
 
                try:
                               monto = Decimal(args.monto)
-                              if not monto.is_infinite():
+                              if not monto.is_finite():
                                              raise ValueError("el monto debe ser un numero finito")
-               except InvalidOperation as exc:
+               except (InvalidOperation, ValueError):
                               parser.error(f"monto no valido: {args.monto}")
                pedido = {"id": args.id,"cliente":args.cliente,"monto": str(monto) }
                try:
                               cuerpo,mime = contruir_mensaje(args.formato,pedido,args.mensaje)
-               except ValueError as excc:
+               except ValueError as exc:
                               parser.error(str(exc))
                               
                
                
-               conexion = stomp.Connection12([(args.host,args.puerto)], vhost="/")
+               conexion = stomp.Connection12([(args.host,args.port)], vhost="/")
                try:
                               conexion.connect(args.usuario, args.clave, wait = True)
                               conexion.send(
@@ -74,7 +74,7 @@ def main():
                                                             "persistent": "true"
                                              },
                               )
-                              print(f"mensaje enviado a {DESTINO}(formato={args.formato}):\n{cuerpo}")
+                              print(f"mensaje enviado a {DESTINO} (formato={args.formato}):\n{cuerpo}")
                finally:
                               if conexion.is_connected():
                                              conexion.disconnect()

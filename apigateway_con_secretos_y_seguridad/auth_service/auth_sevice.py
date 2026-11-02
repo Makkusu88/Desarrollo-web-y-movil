@@ -71,7 +71,7 @@ def login(request:LoginRequest):
                               "expires_at": expiration
                }
                return{
-                              "access-token": access_token,
+                              "access_token": access_token,
                               "token_type": "bearer",
                               "expires_in": TOKEN_LIFETIME_MINUTES * 60
                }
@@ -95,7 +95,7 @@ def introspect(
                               return{
                                              "active": False
                               }
-               if (datatime.now(timezone.utc)> session["expires_at"]):
+               if (datetime.now(timezone.utc)> session["expires_at"]):
                               SESSIONS.pop(
                                              request.token,
                                              None
@@ -107,7 +107,7 @@ def introspect(
                               "active": True,
                               "user_id": session["user_id"],
                               "username": session["username"],
-                              "roles": session["ROLES"],
+                              "roles": session["roles"],
                               "expires_at": session["expires_at"].isoformat()
                }
 

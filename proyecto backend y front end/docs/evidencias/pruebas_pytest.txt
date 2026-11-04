@@ -1,0 +1,66 @@
+============================= test session starts =============================
+platform win32 -- Python 3.12.3, pytest-9.2.0, pluggy-1.7.0 -- C:\Users\tomas\herramientas\venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\tomas\OneDrive\Desktop\desarrolloweb_3\Desarrollo-web-y-movil\proyecto backend y front end
+configfile: pytest.ini
+testpaths: tests
+plugins: anyio-4.15.1
+collecting ... collected 51 items
+
+tests/test_01_contratos.py::test_S01_catalogo_anonimo_solo_campos_publicos PASSED [  1%]
+tests/test_01_contratos.py::test_S01_filtros PASSED                      [  3%]
+tests/test_01_contratos.py::test_S01_busqueda_no_interpreta_regex PASSED [  5%]
+tests/test_01_contratos.py::test_S02_detalle_con_personalizacion PASSED  [  7%]
+tests/test_01_contratos.py::test_rutas_no_publicadas PASSED              [  9%]
+tests/test_01_contratos.py::test_errores_controlados_con_request_id PASSED [ 11%]
+tests/test_01_contratos.py::test_S03_registro_y_perfil PASSED            [ 13%]
+tests/test_01_contratos.py::test_S03_politica_de_contrasena PASSED       [ 15%]
+tests/test_01_contratos.py::test_S06_S07_recuperacion_de_contrasena PASSED [ 17%]
+tests/test_01_contratos.py::test_S11_S14_direcciones_crud PASSED         [ 19%]
+tests/test_01_contratos.py::test_S15_cotizacion_calcula_en_servidor PASSED [ 21%]
+tests/test_02_seguridad.py::test_caso1_catalogo_anonimo PASSED           [ 23%]
+tests/test_02_seguridad.py::test_caso2_sin_sesion PASSED                 [ 25%]
+tests/test_02_seguridad.py::test_caso2_logout_revoca_token PASSED        [ 27%]
+tests/test_02_seguridad.py::test_caso3_rol_sin_permiso PASSED            [ 29%]
+tests/test_02_seguridad.py::test_caso3_csrf_cookie_sin_cabecera PASSED   [ 31%]
+tests/test_02_seguridad.py::test_caso4_pedido_ajeno PASSED               [ 33%]
+tests/test_02_seguridad.py::test_caso4_campos_restringidos_graphql PASSED [ 35%]
+tests/test_02_seguridad.py::test_caso4_direccion_de_otro_cliente PASSED  [ 37%]
+tests/test_02_seguridad.py::test_caso5_acceso_directo_a_servicios_privados PASSED [ 39%]
+tests/test_02_seguridad.py::test_caso5_identidad_inyectada_por_el_navegador PASSED [ 41%]
+tests/test_02_seguridad.py::test_caso6_precio_alterado_se_ignora PASSED  [ 43%]
+tests/test_02_seguridad.py::test_caso6_cliente_no_puede_marcar_pagado PASSED [ 45%]
+tests/test_02_seguridad.py::test_caso6_webhook_falsificado PASSED        [ 47%]
+tests/test_02_seguridad.py::test_caso6_pago_rechazado_no_confirma PASSED [ 49%]
+tests/test_02_seguridad.py::test_logs_sin_secretos_ni_credenciales PASSED [ 50%]
+tests/test_03_negocio.py::test_flujo_completo_delivery PASSED            [ 52%]
+tests/test_03_negocio.py::test_pago_duplicado_y_notificacion_repetida PASSED [ 54%]
+tests/test_03_negocio.py::test_reintento_de_pago_reutiliza_sesion PASSED [ 56%]
+tests/test_03_negocio.py::test_stock_insuficiente_no_crea_pedido PASSED  [ 58%]
+tests/test_03_negocio.py::test_reserva_atomica_entre_productos PASSED    [ 60%]
+tests/test_03_negocio.py::test_anulacion_recupera_stock PASSED           [ 62%]
+tests/test_03_negocio.py::test_expiracion_libera_stock SKIPPED (Inic...) [ 64%]
+tests/test_03_negocio.py::test_idempotency_key_evita_pedidos_duplicados PASSED [ 66%]
+tests/test_03_negocio.py::test_transiciones_invalidas PASSED             [ 68%]
+tests/test_03_negocio.py::test_baja_logica_de_producto_conserva_historial PASSED [ 70%]
+tests/test_03_negocio.py::test_analitica_refleja_ventas PASSED           [ 72%]
+tests/test_04_graphql_grpc_resiliencia.py::test_agregacion_combina_tres_subsistemas PASSED [ 74%]
+tests/test_04_graphql_grpc_resiliencia.py::test_paginacion_limitada PASSED [ 76%]
+tests/test_04_graphql_grpc_resiliencia.py::test_limite_de_costo PASSED   [ 78%]
+tests/test_04_graphql_grpc_resiliencia.py::test_introspeccion_y_lotes_deshabilitados PASSED [ 80%]
+tests/test_04_graphql_grpc_resiliencia.py::test_mutaciones_no_expuestas PASSED [ 82%]
+tests/test_04_graphql_grpc_resiliencia.py::test_grpc_rechaza_sin_certificado_cliente PASSED [ 84%]
+tests/test_04_graphql_grpc_resiliencia.py::test_grpc_rechaza_certificado_de_ca_no_confiable PASSED [ 86%]
+tests/test_04_graphql_grpc_resiliencia.py::test_grpc_autorizacion_por_metodo PASSED [ 88%]
+tests/test_04_graphql_grpc_resiliencia.py::test_inventory_no_responde_pedido_no_se_crea PASSED [ 90%]
+tests/test_04_graphql_grpc_resiliencia.py::test_analytics_no_responde_error_parcial PASSED [ 92%]
+tests/test_04_graphql_grpc_resiliencia.py::test_payments_no_responde_resumen_parcial PASSED [ 94%]
+tests/test_04_graphql_grpc_resiliencia.py::test_proveedor_de_pagos_no_responde PASSED [ 96%]
+tests/test_04_graphql_grpc_resiliencia.py::test_gestor_de_secretos_no_responde_usa_cache PASSED [ 98%]
+tests/test_99_limite_solicitudes.py::test_rate_limit_login PASSED        [100%]
+
+=========================== short test summary info ===========================
+SKIPPED [1] tests\test_03_negocio.py:91: Inicia el sistema con --ttl-pago 30 para probar la expiración
+================== 50 passed, 1 skipped in 105.72s (0:01:45) ==================
+
+[exited with code 0]

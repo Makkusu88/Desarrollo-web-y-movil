@@ -1,0 +1,65 @@
+{
+  "entorno": {
+    "fecha": "2026-10-28T16:57:00",
+    "so": "Windows-11-10.0.26200-SP0",
+    "cpu": "AMD64 Family 26 Model 68 Stepping 0, AuthenticAMD",
+    "nucleos_logicos": 12,
+    "memoria_total_gb": 31.7,
+    "python": "3.12.3",
+    "tipo": "medición (no proyección)",
+    "datos": "seed_data.json (11 productos, 4 usuarios) + pedidos de las pruebas"
+  },
+  "resultados": [
+    {
+      "escenario": "E1 catálogo",
+      "concurrencia": 20,
+      "duracion_s": 30.0,
+      "solicitudes": 28012,
+      "throughput_rps": 934.6,
+      "errores": 0,
+      "tasa_errores": 0.0,
+      "p50_ms": 19.2,
+      "p95_ms": 33.1,
+      "p99_ms": 43.8,
+      "promedio_ms": 21.0,
+      "cpu_promedio_pct": 217.2,
+      "cpu_max_pct": 250.6,
+      "memoria_max_mb": 890.3,
+      "objetivo_p95_ms": 200
+    },
+    {
+      "escenario": "E2 cotización (gRPC)",
+      "concurrencia": 20,
+      "duracion_s": 30.0,
+      "solicitudes": 21790,
+      "throughput_rps": 726.6,
+      "errores": 0,
+      "tasa_errores": 0.0,
+      "p50_ms": 25.2,
+      "p95_ms": 40.7,
+      "p99_ms": 51.3,
+      "promedio_ms": 27.0,
+      "cpu_promedio_pct": 349.2,
+      "cpu_max_pct": 387.5,
+      "memoria_max_mb": 896.6,
+      "objetivo_p95_ms": 300
+    },
+    {
+      "escenario": "E3 agregación GraphQL",
+      "concurrencia": 20,
+      "duracion_s": 30.0,
+      "solicitudes": 18023,
+      "throughput_rps": 601.2,
+      "errores": 0,
+      "tasa_errores": 0.0,
+      "p50_ms": 29.7,
+      "p95_ms": 49.8,
+      "p99_ms": 69.6,
+      "promedio_ms": 32.6,
+      "cpu_promedio_pct": 301.2,
+      "cpu_max_pct": 351.6,
+      "memoria_max_mb": 1038.2,
+      "objetivo_p95_ms": 500
+    }
+  ]
+}

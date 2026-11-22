@@ -77,13 +77,22 @@ async def introspeccionar(token: str, rid: str) -> dict | None:
     clave = hashlib.sha256(token.encode()).hexdigest()
     en_cache = _cache_tokens.get(clave)
     if en_cache and en_cache[0] > time.monotonic():
+        log(SERVICIO, "validacion_auth", request_id=rid, origen="cache", resultado="valido",
+            user_id=en_cache[1]["user_id"], roles=en_cache[1]["roles"])
         return en_cache[1]
-    resp = await run_in_threadpool(http.post, f"{url_servicio('auth')}/introspect", json={"token": token},
+    url_auth = f"{url_servicio('auth')}/introspect"
+    resp = await run_in_threadpool(http.post, url_auth, json={"token": token},
                                    headers=cabeceras_servicio("auth", rid))
     if resp.status_code != 200:
+        log(SERVICIO, "validacion_auth", request_id=rid, origen="auth_service", destino=url_auth,
+            credencial_vault="out_auth", estado_auth=resp.status_code, resultado="error")
         raise httpx.HTTPError(f"auth respondió {resp.status_code}")
     datos = resp.json()
     identidad = {"user_id": datos["user_id"], "roles": datos["roles"]} if datos.get("active") else None
+    log(SERVICIO, "validacion_auth", request_id=rid, origen="auth_service", destino=url_auth,
+        credencial_vault="out_auth", estado_auth=resp.status_code,
+        resultado="valido" if identidad else "invalido",
+        user_id=identidad["user_id"] if identidad else None, roles=identidad["roles"] if identidad else None)
     if identidad:
         _cache_tokens[clave] = (time.monotonic() + CACHE_INTROSPECCION_S, identidad)
     return identidad
@@ -193,6 +202,10 @@ async def proxy(resto: str, request: Request):
     except httpx.HTTPError:
         registrar(rid, request, 503, inicio, ruta.id)
         return con_cabeceras_seguras(error(503, "Servicio no disponible", rid), rid)
+
+    log(SERVICIO, "enrutamiento", request_id=rid, ruta_id=ruta.id, servicio_destino=ruta.destino,
+        url_interna=destino, credencial_vault=f"out_{ruta.destino}", identidad_firmada=identidad is not None,
+        estado_backend=upstream.status_code)
 
     resp = Response(content=upstream.content, status_code=upstream.status_code,
                     media_type=upstream.headers.get("content-type"))
